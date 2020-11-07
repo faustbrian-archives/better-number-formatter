@@ -1,0 +1,55 @@
+{
+    "name": "konceiver/better-number-formatter",
+    "description": ":package_description",
+    "keywords": [
+        "konceiver",
+        "better-number-formatter"
+    ],
+    "homepage": "https://github.com/konceiver/better-number-formatter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Faust",
+            "email": "brian@konceiver.dev",
+            "homepage": "https://konceiver.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4.1"
+    },
+    "require-dev": {
+        "konceiver/stan": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Konceiver\\BetterNumberFormatter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Konceiver\\BetterNumberFormatter\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "vendor/bin/phpunit --coverage-html=.coverage --coverage-clover=clover.xml",
+        "format": "vendor/bin/php-cs-fixer fix ./",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=2G"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Konceiver\\BetterNumberFormatter\\Providers\\BetterNumberFormatterServiceProvider"
+            ],
+            "aliases": {
+                "BetterNumberFormatter": "Konceiver\\BetterNumberFormatter\\Facades\\BetterNumberFormatter"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
