@@ -16,6 +16,7 @@ namespace Konceiver\BetterNumberFormatter;
 use Konceiver\BetterNumberFormatter\Concerns\CanBeFormatter;
 use Konceiver\BetterNumberFormatter\Concerns\CanBeParser;
 use Konceiver\BetterNumberFormatter\Concerns\HasAttributes;
+use Konceiver\BetterNumberFormatter\Concerns\HasCustomFormatters;
 use Konceiver\BetterNumberFormatter\Concerns\HasPadding;
 use Konceiver\BetterNumberFormatter\Concerns\HasRounding;
 use Konceiver\BetterNumberFormatter\Concerns\HasSymbol;
@@ -27,6 +28,7 @@ final class BetterNumberFormatter
     use CanBeFormatter;
     use CanBeParser;
     use HasAttributes;
+    use HasCustomFormatters;
     use HasPadding;
     use HasRounding;
     use HasSymbol;
