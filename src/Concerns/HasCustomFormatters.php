@@ -21,7 +21,7 @@ trait HasCustomFormatters
     /**
      * @param string|int|float $value
      */
-    public static function formatWithCurrencyShort($value, string $currency): string
+    public function formatWithCurrencyShort($value, string $currency): string
     {
         $i     = 0;
         $units = ['', 'K', 'M', 'B', 'T'];
@@ -36,7 +36,7 @@ trait HasCustomFormatters
     /**
      * @param string|int|float $value
      */
-    public static function formatWithCurrencyCustom($value, string $currency, ?int $decimals = null): string
+    public function formatWithCurrencyCustom($value, string $currency, ?int $decimals = null): string
     {
         if (Str::contains((string) $value, ',')) {
             return $value.' '.strtoupper($currency);
@@ -48,6 +48,6 @@ trait HasCustomFormatters
             return rtrim(number_format($value, $decimals ?? 8), '0').' '.strtoupper($currency);
         }
 
-        return static::formatWithDecimal($value).' '.strtoupper($currency);
+        return $this->formatWithDecimal($value).' '.strtoupper($currency);
     }
 }
