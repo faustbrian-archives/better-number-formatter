@@ -15,7 +15,7 @@ namespace Konceiver\BetterNumberFormatter\Concerns;
 
 use NumberFormatter;
 
-trait CanBeFormatter
+trait HasFormatters
 {
     /**
      * @param int|float $value
@@ -77,8 +77,12 @@ trait CanBeFormatter
     /**
      * @param int|float $value
      */
-    public function formatWithPercent($value): string
+    public function formatWithPercent($value, int $decimals = 2): string
     {
+        if ($decimals > 0) {
+            return sprintf('%0.'.$decimals.'f', $value, $decimals).'%';
+        }
+
         return $this->withStyle(NumberFormatter::PERCENT)->format($value);
     }
 

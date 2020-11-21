@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Konceiver\BetterNumberFormatter;
 
-use Konceiver\BetterNumberFormatter\Concerns\CanBeFormatter;
-use Konceiver\BetterNumberFormatter\Concerns\CanBeParser;
 use Konceiver\BetterNumberFormatter\Concerns\HasAttributes;
 use Konceiver\BetterNumberFormatter\Concerns\HasCustomFormatters;
+use Konceiver\BetterNumberFormatter\Concerns\HasFormatters;
 use Konceiver\BetterNumberFormatter\Concerns\HasPadding;
+use Konceiver\BetterNumberFormatter\Concerns\HasParsers;
 use Konceiver\BetterNumberFormatter\Concerns\HasRounding;
 use Konceiver\BetterNumberFormatter\Concerns\HasSymbol;
 use Konceiver\BetterNumberFormatter\Concerns\HasTextAttributes;
@@ -25,11 +25,11 @@ use NumberFormatter;
 
 final class BetterNumberFormatter
 {
-    use CanBeFormatter;
-    use CanBeParser;
     use HasAttributes;
     use HasCustomFormatters;
+    use HasFormatters;
     use HasPadding;
+    use HasParsers;
     use HasRounding;
     use HasSymbol;
     use HasTextAttributes;

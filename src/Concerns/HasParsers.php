@@ -15,7 +15,7 @@ namespace Konceiver\BetterNumberFormatter\Concerns;
 
 use NumberFormatter;
 
-trait CanBeParser
+trait HasParsers
 {
     /** @return float|false */
     public function parseWithDefault(string $value)
