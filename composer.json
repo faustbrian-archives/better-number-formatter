@@ -41,16 +41,6 @@
     "config": {
         "sort-packages": true
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Konceiver\\BetterNumberFormatter\\Providers\\BetterNumberFormatterServiceProvider"
-            ],
-            "aliases": {
-                "BetterNumberFormatter": "Konceiver\\BetterNumberFormatter\\Facades\\BetterNumberFormatter"
-            }
-        }
-    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
