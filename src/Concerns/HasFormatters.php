@@ -77,7 +77,7 @@ trait HasFormatters
     /**
      * @param int|float $value
      */
-    public function formatWithPercent($value, ?int $decimals): string
+    public function formatWithPercent($value, ?int $decimals = null): string
     {
         if (! is_null($decimals)) {
             return sprintf('%0.'.$decimals.'f', $value, $decimals).'%';
