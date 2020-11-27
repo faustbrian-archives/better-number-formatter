@@ -20,7 +20,7 @@ final class ResolveScientificNotation
         $parts = explode('E', strtoupper((string) $float));
 
         if (count($parts) === 2) {
-            $exp     = abs(end($parts)) + strlen($parts[0]);
+            $exp     = abs((float) end($parts)) + strlen($parts[0]);
             $decimal = number_format($float, (int) $exp);
 
             return strval(rtrim($decimal, '.0'));
