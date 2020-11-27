@@ -14,70 +14,47 @@ declare(strict_types=1);
 namespace Konceiver\BetterNumberFormatter\Concerns;
 
 use NumberFormatter;
+use RuntimeException;
 
 trait HasFormatters
 {
-    /**
-     * @param int|float $value
-     */
-    public function formatWithCurrency($value): string
+    public function formatWithCurrency(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::CURRENCY)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithCurrencyAccounting($value): string
+    public function formatWithCurrencyAccounting(int|float $value): string
     {
         /* @phpstan-ignore-next-line */
         return $this->withStyle(NumberFormatter::CURRENCY_ACCOUNTING)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithDecimal($value): string
+    public function formatWithDecimal(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::DECIMAL)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithDefaultStyle($value): string
+    public function formatWithDefaultStyle(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::DEFAULT_STYLE)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithDuration($value): string
+    public function formatWithDuration(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::DURATION)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithIgnore($value): string
+    public function formatWithIgnore(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::IGNORE)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithOrdinal($value): string
+    public function formatWithOrdinal(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::ORDINAL)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithPercent($value, ?int $decimals = null): string
+    public function formatWithPercent(int|float $value, ?int $decimals = null): string
     {
         if (! is_null($decimals)) {
             return sprintf('%0.'.$decimals.'f', $value, $decimals).'%';
@@ -86,27 +63,24 @@ trait HasFormatters
         return $this->withStyle(NumberFormatter::PERCENT)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithScientific($value): string
+    public function formatWithScientific(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::SCIENTIFIC)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    public function formatWithSpellout($value): string
+    public function formatWithSpellout(int|float $value): string
     {
         return $this->withStyle(NumberFormatter::SPELLOUT)->format($value);
     }
 
-    /**
-     * @param int|float $value
-     */
-    private function format($value): string
+    private function format(int|float $value): string
     {
-        return $this->formatter->format($value);
+        $value = $this->formatter->format($value);
+
+        if ($value === false) {
+            throw new RuntimeException('Failed to format the given value.');
+        }
+
+        return $value;
     }
 }
