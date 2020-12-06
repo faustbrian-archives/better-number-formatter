@@ -17,21 +17,21 @@ use NumberFormatter;
 
 trait HasAttributes
 {
-    public function withParseIntOnly(int|float $value): self
+    public function withParseIntOnly(int | float $value): self
     {
         $this->formatter->setAttribute(NumberFormatter::PARSE_INT_ONLY, $value);
 
         return $this;
     }
 
-    public function withGroupingUsed(int|float $value): self
+    public function withGroupingUsed(int | float $value): self
     {
         $this->formatter->setAttribute(NumberFormatter::GROUPING_USED, $value);
 
         return $this;
     }
 
-    public function withDecimalAlwaysShown(int|float $value): self
+    public function withDecimalAlwaysShown(int | float $value): self
     {
         $this->formatter->setAttribute(NumberFormatter::DECIMAL_ALWAYS_SHOWN, $value);
 
