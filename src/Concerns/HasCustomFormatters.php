@@ -18,10 +18,7 @@ use Konceiver\BetterNumberFormatter\ResolveScientificNotation;
 
 trait HasCustomFormatters
 {
-    /**
-     * @param string|int|float $value
-     */
-    public function formatWithCurrencyShort($value, string $currency): string
+    public function formatWithCurrencyShort(int|float|string $value, string $currency): string
     {
         $i     = 0;
         $units = ['', 'K', 'M', 'B', 'T'];
@@ -33,10 +30,7 @@ trait HasCustomFormatters
         return round((float) $value, 1).$units[$i].' '.strtoupper($currency);
     }
 
-    /**
-     * @param string|int|float $value
-     */
-    public function formatWithCurrencyCustom($value, string $currency, ?int $decimals = null): string
+    public function formatWithCurrencyCustom(int|float|string $value, string $currency, ?int $decimals = null): string
     {
         if (Str::contains((string) $value, ',')) {
             return $value.' '.strtoupper($currency);
