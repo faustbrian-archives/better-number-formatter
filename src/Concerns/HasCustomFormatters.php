@@ -42,6 +42,6 @@ trait HasCustomFormatters
             return rtrim(number_format($value, $decimals ?? 8), '0').' '.strtoupper($currency);
         }
 
-        return $this->formatWithDecimal($value).' '.strtoupper($currency);
+        return $this->formatWithDecimal((float)$value).' '.strtoupper($currency);
     }
 }
