@@ -35,13 +35,15 @@ trait HasCustomFormatters
         $result = $this->formatWithDecimal((float)$value);
 
         if (Str::contains((string) $value, ',')) {
-            $result = $value;
-        } else if (Str::contains((string) $value, '.')) {
-            $value = (float) ResolveScientificNotation::execute((float) $value);
-
-            $result = rtrim(number_format($value, $decimals ?? 8), '0');
+            $result = $value.' '.strtoupper($currency);
         }
 
+        if (Str::contains((string) $value, '.')) {
+            $value = (float) ResolveScientificNotation::execute((float) $value);
+
+            $result = rtrim(number_format($value, $decimals ?? 8), '0').' '.strtoupper($currency);
+        }
+        
         return rtrim($result.' '.strtoupper($currency));
     }
 }
