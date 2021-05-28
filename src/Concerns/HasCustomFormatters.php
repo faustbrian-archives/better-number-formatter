@@ -32,16 +32,16 @@ trait HasCustomFormatters
 
     public function formatWithCurrencyCustom(int | float | string $value, string $currency, ?int $decimals = null): string
     {
+        $result = $this->formatWithDecimal((float)$value);
+
         if (Str::contains((string) $value, ',')) {
-            return $value.' '.strtoupper($currency);
+            $result = $value;
         }
 
         if (Str::contains((string) $value, '.')) {
-            $value = (float) ResolveScientificNotation::execute((float) $value);
-
-            return rtrim(number_format($value, $decimals ?? 8), '0').' '.strtoupper($currency);
+            $result = rtrim(number_format((float) ResolveScientificNotation::execute((float) $value), $decimals ?? 8), '0');
         }
 
-        return $this->formatWithDecimal((float) $value).' '.strtoupper($currency);
+        return rtrim($result.' '.strtoupper($currency));
     }
 }
