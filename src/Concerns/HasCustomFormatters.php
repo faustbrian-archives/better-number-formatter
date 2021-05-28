@@ -32,7 +32,7 @@ trait HasCustomFormatters
 
     public function formatWithCurrencyCustom(int | float | string $value, string $currency, ?int $decimals = null): string
     {
-        $result = $this->formatWithDecimal((float)$value);
+        $result = $this->formatWithDecimal((float) $value);
 
         if (Str::contains((string) $value, ',')) {
             $result = $value;
