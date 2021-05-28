@@ -43,7 +43,7 @@ trait HasCustomFormatters
 
             $result = rtrim(number_format($value, $decimals ?? 8), '0').' '.strtoupper($currency);
         }
-        
+
         return rtrim($result.' '.strtoupper($currency));
     }
 }
