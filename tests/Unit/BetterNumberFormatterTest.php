@@ -9,7 +9,9 @@ it('should format custom currency thousands with a comma', function (): void {
 
     expect($instance->formatWithCurrencyCustom('1,000', 'USD', 2))->toBe('1,000 USD');
     expect($instance->formatWithCurrencyCustom('1,000.00', 'USD', 2))->toBe('1,000.00 USD');
+    expect($instance->formatWithCurrencyCustom('1,000.0000', 'USD', 2))->toBe('1,000.00 USD');
     expect($instance->formatWithCurrencyCustom('1,234.56', 'USD', 2))->toBe('1,234.56 USD');
+    expect($instance->formatWithCurrencyCustom('1,234.5678', 'USD', 2))->toBe('1,234.56 USD');
 });
 
 it('should format custom currency thousands with a period', function (): void {
@@ -17,5 +19,7 @@ it('should format custom currency thousands with a period', function (): void {
 
     expect($instance->formatWithCurrencyCustom('1.000', 'USD', 2))->toBe('1.000 USD');
     expect($instance->formatWithCurrencyCustom('1.000,00', 'USD', 2))->toBe('1.000,00 USD');
+    expect($instance->formatWithCurrencyCustom('1.000,0000', 'USD', 2))->toBe('1.000,00 USD');
     expect($instance->formatWithCurrencyCustom('1.234,56', 'USD', 2))->toBe('1.234,56 USD');
+    expect($instance->formatWithCurrencyCustom('1.234,5678', 'USD', 2))->toBe('1.234,56 USD');
 });
