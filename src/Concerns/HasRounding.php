@@ -19,50 +19,36 @@ trait HasRounding
 {
     public function withCeilingRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_CEILING);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_CEILING);
     }
 
     public function withDownRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_DOWN);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_DOWN);
     }
 
     public function withFloorRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_FLOOR);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_FLOOR);
     }
 
     public function withHalfDownRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_HALFDOWN);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_HALFDOWN);
     }
 
     public function withHalfEvenRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_HALFEVEN);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_HALFEVEN);
     }
 
     public function withHalfUpRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_HALFUP);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_HALFUP);
     }
 
     public function withUpRounding(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_UP);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::ROUNDING_MODE, NumberFormatter::ROUND_UP);
     }
 }

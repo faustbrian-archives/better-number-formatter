@@ -40,11 +40,28 @@ final class BetterNumberFormatter
 
     private NumberFormatter $formatter;
 
-    private function __construct(string $locale, int $style)
-    {
+    private function __construct(
+        string $locale,
+        int $style,
+        array $attributes = [],
+        array $textAttributes = [],
+        array $symbols = []
+    ) {
         $this->locale    = $locale;
         $this->style     = $style;
         $this->formatter = new NumberFormatter($locale, $style);
+
+        foreach ($attributes as $attribute => $value) {
+            $this->setAttribute($attribute, $value);
+        }
+
+        foreach ($textAttributes as $attribute => $value) {
+            $this->setTextAttribute($attribute, $value);
+        }
+
+        foreach ($symbols as $symbol => $value) {
+            $this->setSymbol($symbol, $value);
+        }
     }
 
     public static function new(string $locale = 'en_US', int $style = NumberFormatter::DECIMAL): self
@@ -54,11 +71,23 @@ final class BetterNumberFormatter
 
     public function withLocale(string $locale): self
     {
-        return new static($locale, $this->style);
+        return new static(
+            $locale,
+            $this->style,
+            $this->attributes,
+            $this->textAttributes,
+            $this->symbols
+        );
     }
 
     public function withStyle(int $style): self
     {
-        return new static($this->locale, $style);
+        return new static(
+            $this->locale,
+            $style,
+            $this->attributes,
+            $this->textAttributes,
+            $this->symbols
+        );
     }
 }
