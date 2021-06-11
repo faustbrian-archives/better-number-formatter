@@ -73,9 +73,25 @@ trait HasFormatters
         return $this->withStyle(NumberFormatter::SPELLOUT)->format($value);
     }
 
-    private function format(int | float $value): string
+    public function format(int | float $value): string
     {
         $value = $this->formatter->format($value);
+
+        if ($value === false) {
+            throw new RuntimeException('Failed to format the given value.');
+        }
+
+        return $value;
+    }
+
+    public function formatCurrency(int | float $value, ?string $currency = null): string
+    {
+        $value = $this->withStyle(NumberFormatter::CURRENCY)
+            ->formatter
+            ->formatCurrency(
+                $value,
+                $currency ?? $this->getTextAttribute(NumberFormatter::CURRENCY_CODE)
+            );
 
         if ($value === false) {
             throw new RuntimeException('Failed to format the given value.');

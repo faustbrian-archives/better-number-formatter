@@ -19,29 +19,21 @@ trait HasPadding
 {
     public function withPaddingAfterPrefix(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_AFTER_PREFIX);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_AFTER_PREFIX);
     }
 
     public function withPaddingAfterSuffix(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_AFTER_SUFFIX);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_AFTER_SUFFIX);
     }
 
     public function withPaddingBeforePrefix(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_BEFORE_PREFIX);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_BEFORE_PREFIX);
     }
 
     public function withPaddingBeforeSuffix(): self
     {
-        $this->formatter->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_BEFORE_SUFFIX);
-
-        return $this;
+        return $this->setAttribute(NumberFormatter::PADDING_POSITION, NumberFormatter::PAD_BEFORE_SUFFIX);
     }
 }
