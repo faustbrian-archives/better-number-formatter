@@ -37,7 +37,8 @@ trait HasCustomFormatters
         if (Str::contains((string) $value, ',')) {
             $result = $value;
         } elseif (Str::contains((string) $value, '.')) {
-            $result = rtrim(number_format((float) ResolveScientificNotation::execute((float) $value), $decimals ?? 8), '0');
+            $result = number_format((float) ResolveScientificNotation::execute((float) $value), $decimals ?? 8);
+            $result = rtrim(rtrim($result, '0'), '.');
         }
 
         return rtrim($result.' '.strtoupper($currency));
